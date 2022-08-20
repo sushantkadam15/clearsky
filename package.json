@@ -1,0 +1,19 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "Weather app for my project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sushantkadam15/weather-app.git"
+  },
+  "author": "Sushant Kadam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sushantkadam15/weather-app/issues"
+  },
+  "homepage": "https://github.com/sushantkadam15/weather-app#readme"
+}
