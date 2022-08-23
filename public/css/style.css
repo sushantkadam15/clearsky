@@ -67,6 +67,8 @@ html, body{
     font-family: inherit;
     border-radius: 10px;
     padding: 1.5rem auto;
+    max-height: 25vh;
+    overflow-y: scroll;
   }
 
   .autocomplete-items div:hover {

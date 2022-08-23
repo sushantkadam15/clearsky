@@ -19,7 +19,7 @@ function autocomplete(userInput, cities) {
     var a,
       b,
       i,
-      val = this.value;
+      val = this.value; // String value for the autocomplete stored here
     /*close any already open lists of autocompleted values*/
     closeAllLists();
     if (!val) {
@@ -51,6 +51,7 @@ function autocomplete(userInput, cities) {
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode == 40) {
       currentFocus++;
+    
       addActive(x);
     } else if (e.keyCode == 38) {
       currentFocus--;
