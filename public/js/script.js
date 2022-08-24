@@ -4,7 +4,7 @@ fetch("data/city-data.json")
   .then((response) => response.json())
   .then((resData) => {
     for (let i of resData) {
-      cities.push(i.Name);
+      cities.push(`${i.Name}, ${i.Country} `);
     }
   })
   .catch((e) => console.log("ERROR", e));
@@ -94,5 +94,4 @@ function autocomplete(userInput, cities) {
     closeAllLists(e.target);
   });
 }
-
 autocomplete(searchBox, cities);
