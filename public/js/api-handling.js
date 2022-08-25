@@ -39,37 +39,30 @@ const cityWeather = async (cityname) => {
   const currentCityGeoDetails = await cityGeoDetails(cityname);
   const { latitude, longitude } = currentCityGeoDetails;
   const openWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=7235ffc6d18866a3091b53be72948206`;
-  console.log(openWeatherURL);
-  axios
-    .get(openWeatherURL)
-    .then((response) => {
-      const {
-        id: iconId,
-        main: iconMain,
-        description: iconDescription,
-        icon: iconCode,
-      } = response.data.weather[0];
-      const {
-        temp: currentTemp,
-        feels_like: feelsLike,
-        temp_min: todaysMin,
-        temp_max: todaysMax,
-        humidity,
-      } = response.data.main;
-      const receivedWeatherData = {
-        currentTemp,
-        feelsLike,
-        todaysMin,
-        todaysMax,
-        humidity,
-        iconMain,
-        returnedIcon: () => {
-          // Generating link for icon: https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
-        
-        },
-      };
-    })
-    .catch((err) => console.log(err));
+  const weatherApiResponse = await axios.get(openWeatherURL);
+  const {
+    main: iconMain,
+    description: iconDescription,
+    icon: iconCode,
+  } = weatherApiResponse.data.weather[0];
+  const {
+    temp: currentTemp,
+    feels_like: feelsLike,
+    temp_min: todaysMin,
+    temp_max: todaysMax,
+    humidity,
+  } = weatherApiResponse.data.main;
+  const receivedWeatherData = {
+    currentTemp,
+    feelsLike,
+    todaysMin,
+    todaysMax,
+    humidity,
+    iconMain,
+    iconDescription,
+    returnedIcon: `http://openweathermap.org/img/wn/${iconCode}@2x.png`,
+  };
+  return receivedWeatherData
 };
 
-cityWeather("Mumbai, India");
+module.exports = {cityWeather}
