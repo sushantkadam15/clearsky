@@ -1,10 +1,10 @@
 // Loading city name from json file
 const cities = [];
-fetch("data/city-data.json")
+fetch("data/world-cities.json")
   .then((response) => response.json())
   .then((resData) => {
     for (let i of resData) {
-      cities.push(`${i.Name}, ${i.Country} `);
+      cities.push(`${i.name}, ${((i.country).substr(0, 2)).toUpperCase()}`);
     }
   })
   .catch((e) => console.log("ERROR", e));
