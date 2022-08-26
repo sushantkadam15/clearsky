@@ -1,7 +1,6 @@
 const axios = require("axios");
 const { response } = require("express");
 const worldCitiesJSON = require('../data/world-cities.json') ;
-const timestamp = require('unix-timestamp')
 
 
 const weatherIcons = {
