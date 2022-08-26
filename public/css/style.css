@@ -127,4 +127,7 @@ input {
     background-color: #f5f5f5;
     border-radius: 25px;
   }
+  .author{
+    bottom: 100px;
+  }
 }
