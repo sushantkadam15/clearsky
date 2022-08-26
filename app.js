@@ -22,9 +22,14 @@ app.get("/", (req, res) => res.render("index"));
 
 //********** Routes **********//
 app.get("/city", async (req, res) => {
-  let requestedCity = String(req.query.cityname);
-  requestedCity = requestedCity.slice(0, -4);
-  retreivedData = await apiResults.cityWeather(requestedCity);
-  console.log(retreivedData);
-  res.send(`Website under progress. Requested City ${requestedCity}`);
+  const requestedCity = String(req.query.cityname);
+  try {
+    const retreivedData = await apiResults.cityWeather(
+      requestedCity.slice(0, -4)
+    );
+    res.render("weather", { requestedCity, retreivedData });
+  } catch (e) {
+    console.log(e);
+    res.render("error");
+  }
 });

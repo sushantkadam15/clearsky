@@ -17,29 +17,33 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/767125c13e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css" />
-
   </head>
   <body>
-    <div
-      class="container fill d-flex flex-column align-items-center justify-content-center"
-    >
-      <div class="row">
-        <h2 id="appLogo">🌦️</h2>
-      </div>
-        <div class="row">
-        <h2 id="appName">Weather App</h2>
-      </div>
-      <div class="row autocomplete">
-        <form action="/city" method="get" autocomplete="off" > 
-          <input type="search" name="cityname" id="search" placeholder="Search" class="form-control me-2 rounded-pill custom-select">
-      </form>
-      </div>
-      <div class="row author">
-        By Sushant Kadam 👨🏼‍💻
+    <div class="container fill">
+      <div
+        class="contain-title-search h-100 d-flex justify-content-center flex-column align-items-center"
+      >
+        <div class="row contain-logo">🌦️</div>
+        <div class="row contain-title">Weather App</div>
+        <div class="row contain-search autocomplete">
+          <form action="/city" method="get" autocomplete="off" class="d-flex">
+            <input
+              type="search"
+              name="cityname"
+              id="search"
+              class="form-control me-2 rounded-pill custom-select"
+            />
+  
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass-location"></i></button>
+  
+          </form>
+        </div>
+        <div class="row author">By Sushant Kadam 👨🏼‍💻</div>
       </div>
     </div>
     <script src="js/script.js"></script>
   </body>
 </html>
-
