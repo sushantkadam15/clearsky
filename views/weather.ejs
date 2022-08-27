@@ -37,14 +37,14 @@
             <div>Min<span class="weather-result"><%= Math.floor(retreivedData.todaysMin) %></span></div>
             <div>Max<span class="weather-result"><%= Math.floor(retreivedData.todaysMax) %></span></div>
           </div>
-          <div class="col-7 d-flex flex-column justify-content-between align-items-center windspeed">
-            <div>Humidity<span class="weather-result"><%= retreivedData.humidity %>%</span></div>
+          <div class="col-7 d-flex flex-column justify-content-start align-items-center">
+            <div class="mb-2">Humidity<span class="weather-result"><%= retreivedData.humidity %>%</span></div>
             <div class="w-75">
               <i class="fa-solid fa-wind"></i>
-              <span class="d-block">Wind Speed</span>
+              <span class="d-block mb-3">Wind Speed</span>
               <div class="d-flex justify-content-between align-items-end">
-                <div class="">Speed<span class="weather-result"><%= retreivedData.wind.speed %> <span class="h6">Km/h</span></span></div>
-                <div class="">Degree<span class="weather-result"><%= retreivedData.wind.deg%></span></div>
+                <div class="wind">Speed<span class="weather-result"><%= retreivedData.wind.speed %> <span>Km/h</span></span></div>
+                <div class="wind">Degree<span class="weather-result"><%= retreivedData.wind.deg%></span></div>
               </div>
             </div>
           </div>

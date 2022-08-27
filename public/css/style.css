@@ -106,8 +106,14 @@ input {
   font-size: 2rem;
 } 
 .windspeed i{
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding-bottom: 30px;
+}
+.wind{
+  font-size: 1rem;
+}
+.wind span{
+  font-size: 1rem;
 }
 
 /* For Cellphones */
