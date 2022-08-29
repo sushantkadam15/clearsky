@@ -89,8 +89,9 @@ input {
 
 .temp-display{
   background-color: #fefefe ;
-  border: rgba(84, 84, 84, .5) 1px solid;
+  /* border: rgba(84, 84, 84, .5) 1px solid; */
   border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .temp-display img{
   height: 120px;
@@ -100,6 +101,7 @@ input {
 }
 .weather-divider{
   border-right: #545454 solid 1px;
+  
 }
 .weather-result{
   display: block;
