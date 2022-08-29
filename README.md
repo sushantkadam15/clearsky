@@ -1,5 +1,6 @@
 # weather-app
-<a href ="https://weatherappbysushant.herokuapp.com/" target="_blank"> App Link</a> <br>
+<a href ="https://weatherappbysushant.herokuapp.com/" target="_blank">🌦️ App Link</a> <br>
+<hr>
 <b>The weather app shows the weather for all the major cities only.
 </b> <br>
 <ul>
