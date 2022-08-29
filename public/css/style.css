@@ -107,15 +107,13 @@ input {
   display: block;
   font-size: 2rem;
 } 
-.windspeed i{
-  font-size: 1rem;
-  padding-bottom: 30px;
+
+.all-w-data{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
 }
-.wind{
-  font-size: 1rem;
-}
-.wind span{
-  font-size: 1rem;
+.km{
+  font-size: .6rem;
 }
 
 /* For Cellphones */
