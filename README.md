@@ -9,12 +9,13 @@
 <li>The app makes API calls using geo-id from the major-cities.json file.</li>
 </ul> 
 <p>
-<h2>Framework and Libraries Used:</h2>
+<h2>Framework, Libraries and Databases Used:</h2>
 <ul>
 <li>Node JS</li>
 <li>Express JS</li>
 <li>Embedded JS</li>
 <li>Bootstrap 5</li>
+ <li>Mongo DB<li/>
 </ul>
 </p>
 
