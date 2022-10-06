@@ -15,7 +15,6 @@
 <li>Express JS</li>
 <li>Embedded JS</li>
 <li>Bootstrap 5</li>
- <li>Mongo DB</li>
 </ul>
 </p>
 
