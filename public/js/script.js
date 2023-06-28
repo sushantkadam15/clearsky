@@ -1,97 +1,102 @@
-// Loading city name from json file
-const cities = [];
-fetch("data/world-cities.json")
-  .then((response) => response.json())
-  .then((resData) => {
-    for (let i of resData) {
-      cities.push(`${i.name}, ${((i.country).substr(0, 2)).toUpperCase()}`);
-    }
-  })
-  .catch((e) => console.log("ERROR", e));
-
-//********** Autocomplete function for city search **********//
-
 const searchBox = document.querySelector("#search");
+const autocompleteList = document.createElement("div");
+autocompleteList.id = "autocomplete-list";
+autocompleteList.className = "autocomplete-items position-absolute bg-light col-7 col-lg-3";
+searchBox.parentNode.appendChild(autocompleteList);
+
 function autocomplete(userInput, cities) {
-  var currentFocus;
-  /*execute a function when someone writes in the text field:*/
-  userInput.addEventListener("input", function (e) {
-    var a,
-      b,
-      i,
-      val = this.value; // String value for the autocomplete stored here
-    /*close any already open lists of autocompleted values*/
+  let currentFocus;
+
+  // Event listener for input changes
+  userInput.addEventListener("input", function () {
+    const val = this.value.trim().toUpperCase();
     closeAllLists();
     if (!val) {
       return false;
     }
     currentFocus = -1;
-    a = document.createElement("div");
-    a.setAttribute("id", this.id + "autocomplete-list");
-    a.setAttribute("class", "autocomplete-items");
-    this.parentNode.appendChild(a);
-    for (i = 0; i < cities.length; i++) {
-      if (cities[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-        b = document.createElement("div");
-        b.innerHTML =
-          "<strong>" + cities[i].substr(0, val.length) + "</strong>";
-        b.innerHTML += cities[i].substr(val.length);
-        b.innerHTML += "<input type='hidden' value='" + cities[i] + "'>";
-        b.addEventListener("click", function (e) {
-          userInput.value = this.getElementsByTagName("input")[0].value;
-          closeAllLists();
-        });
-        a.appendChild(b);
-      }
+    const matchingCities = cities.filter((city) =>
+      city.toUpperCase().startsWith(val)
+    );
+    const numResults = Math.min(matchingCities.length, 5);
+
+    const { bottom, left, offsetWidth } = this.getBoundingClientRect();
+    Object.assign(autocompleteList.style, {
+      top: `${bottom}px`,
+      left: `${left}px`,
+      width: `${offsetWidth}px`,
+      zIndex: "10",
+    });
+    autocompleteList.innerHTML = "";
+
+    // Generate autocomplete items
+    for (let i = 0; i < numResults; i++) {
+      const autocompleteItem = document.createElement("div");
+      autocompleteItem.innerHTML = `<strong>${matchingCities[i].substr(0, val.length)}</strong>`;
+      autocompleteItem.innerHTML += matchingCities[i].substr(val.length);
+      autocompleteItem.innerHTML += `<input type='hidden' value='${matchingCities[i]}'>`;
+      autocompleteItem.addEventListener("click", function () {
+        userInput.value = this.getElementsByTagName("input")[0].value;
+        closeAllLists();
+      });
+      autocompleteList.appendChild(autocompleteItem);
     }
+
+    autocompleteList.style.display = "block";
   });
-  /*execute a function presses a key on the keyboard:*/
+
+  // Event listener for keyboard inputs
   userInput.addEventListener("keydown", function (e) {
-    var x = document.getElementById(this.id + "autocomplete-list");
-    if (x) x = x.getElementsByTagName("div");
-    if (e.keyCode == 40) {
+    const autocompleteItems = autocompleteList.getElementsByTagName("div");
+    if (e.keyCode === 40) {
       currentFocus++;
-    
-      addActive(x);
-    } else if (e.keyCode == 38) {
+      addActive(autocompleteItems);
+    } else if (e.keyCode === 38) {
       currentFocus--;
-      addActive(x);
-    } else if (e.keyCode == 13) {
-      if (currentFocus > -1) {
-        /*and simulate a click on the "active" item:*/
-        if (x) x[currentFocus].click();
-      }
+      addActive(autocompleteItems);
+    } else if (e.keyCode === 13 && currentFocus > -1 && autocompleteItems) {
+      autocompleteItems[currentFocus].click();
     }
   });
-  function addActive(x) {
-    /*a function to classify an item as "active":*/
-    if (!x) return false;
-    /*start by removing the "active" class on all items:*/
-    removeActive(x);
-    if (currentFocus >= x.length) currentFocus = 0;
-    if (currentFocus < 0) currentFocus = x.length - 1;
-    /*add class "autocomplete-active":*/
-    x[currentFocus].classList.add("autocomplete-active");
+
+  // Add 'autocomplete-active' class to the selected item
+  function addActive(autocompleteItems) {
+    if (!autocompleteItems) {
+      return false;
+    }
+    removeActive(autocompleteItems);
+    currentFocus = (currentFocus + autocompleteItems.length) % autocompleteItems.length;
+    autocompleteItems[currentFocus].classList.add("autocomplete-active");
   }
-  function removeActive(x) {
-    /*a function to remove the "active" class from all autocomplete items:*/
-    for (var i = 0; i < x.length; i++) {
-      x[i].classList.remove("autocomplete-active");
+
+  // Remove 'autocomplete-active' class from all items
+  function removeActive(autocompleteItems) {
+    for (let i = 0; i < autocompleteItems.length; i++) {
+      autocompleteItems[i].classList.remove("autocomplete-active");
     }
   }
-  function closeAllLists(elmnt) {
-    /*close all autocomplete lists in the document,
-      except the one passed as an argument:*/
-    var x = document.getElementsByClassName("autocomplete-items");
-    for (var i = 0; i < x.length; i++) {
-      if (elmnt != x[i] && elmnt != userInput) {
-        x[i].parentNode.removeChild(x[i]);
-      }
+
+  // Close autocomplete list
+  function closeAllLists() {
+    while (autocompleteList.firstChild) {
+      autocompleteList.firstChild.remove();
     }
+    autocompleteList.style.display = "none";
   }
-  /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {
-    closeAllLists(e.target);
-  });
+
+  // Event listener to close autocomplete list on document click
+  document.addEventListener("click", closeAllLists);
 }
+
+const cities = [];
+
+// Fetch city names from JSON file
+fetch("data/world-cities.json")
+  .then((response) => response.json())
+  .then((resData) => {
+    cities.push(...resData.map(i => `${i.name}, ${i.country.substr(0, 2).toUpperCase()}`));
+  })
+  .catch((e) => console.log("ERROR", e));
+
+// Initialize autocomplete
 autocomplete(searchBox, cities);

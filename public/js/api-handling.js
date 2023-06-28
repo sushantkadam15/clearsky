@@ -20,10 +20,6 @@ const getGeoNameIDfromJSON = (cityname) => {
   return cityObj[0].geonameid;
   }
   
-getGeoNameIDfromJSON('Toronto')
-
-
-
 
 //URL Using City ID
 
