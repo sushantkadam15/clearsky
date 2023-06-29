@@ -67,6 +67,3 @@
 
 <p>This project utilizes the OpenWeatherMap API to fetch weather data for the selected city. An API key is required for accessing the weather data.</p>
 
-<h2>Credits</h2>
-
-<p>World Cities JSON data: <a href="https://simplemaps.com/data/world-cities">Simplemaps.com</a></p>
