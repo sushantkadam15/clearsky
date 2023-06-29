@@ -1,79 +1,85 @@
 <%- include('./partials/header.ejs') %>
 <body>
-  <div class="container d-flex flex-column justify-content-evenly h-100 w-100 fill mt-4">
-    <div class="row d-flex flex-column align-items-center text-center">
-      <div class="h1 mb-2"><a href="/"><i class="fa-solid fa-house"></i></a></div>
-      <div class="h5  mb-4"><%= requestedCity %><span class="d-block h6">Today</span></div>
-      <div class="row temp-display mb-1 w-50 align-items-start">
-        <div class="col-2"><img src="<%= retreivedData.weather.iconURL %>" class="weather-icon"></div>
-        <div class="col-10 current-temp mt-0">
-          <span class="display-4"><%= Math.floor(retreivedData.main.temp) %>&#8451;</span>
-          <div class="h4"><%= retreivedData.weather.main %></div>
+  <div class="container w-100 mt-4">
+    <div class="card m-3 w-100 p-4">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <div class="row">
+            <!-- Weather Icon -->
+            <img src="<%= retreivedData.weather.iconURL %>" class="img-fluid rounded-start h-100" alt="...">
+          </div>
+          <div class="row text-center">
+            <!-- Current Temperature -->
+            <h1><%= Math.floor(retreivedData.main.temp) %>&#8451;</h1> 
+            <div class="h5"><%= retreivedData.weather.main %></div>
+          </div>
+        </div>
+        <div class="col-md-8 mt-4">
+          <div class="row">
+            <!-- City Name and Date -->
+            <div class="col-md-10">
+              <div class="card-title fs-1"><%= requestedCity %></div> <span class="d-block h6">Today</span>
+            </div>
+            <div class="col-md-2">
+              <a href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                  <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-md-4">
+              <!-- Feels Like Temperature -->
+              <div class="fs-4">Feels Like</div>
+              <div class="fs-6"><%= Math.floor(retreivedData.main.feels_like) %>&#8451;</div>
+            </div>
+            <div class="col-md-4">
+              <!-- Minimum Temperature -->
+              <div class="fs-4">Min</div>
+              <div class="fs-6"><%= Math.floor(retreivedData.main.temp_min) %>&#8451;</div>
+            </div>
+            <div class="col-md-4">
+              <!-- Maximum Temperature -->
+              <div class="fs-3">Max</div>
+              <div class="fs-6"><%= Math.floor(retreivedData.main.temp_max) %>&#8451;</div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-md-4">
+              <!-- Humidity -->
+              <div class="fs-4">Humidity</div>
+              <div class="fs-6"><%= retreivedData.main.humidity %>%</div>
+            </div>
+            <div class="col-md-4">
+              <!-- Wind Speed -->
+              <div class="fs-4">Wind Speed</div>
+              <div class="fs-6"><%= retreivedData.wind.speed %> Km/h</div>
+            </div>
+            <div class="col-md-4">
+              <!-- Pressure -->
+              <div class="fs-4">Pressure</div>
+              <div class="fs-6"><%= retreivedData.main.pressure %> hPa</div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-md-12">
+              <!-- Visibility -->
+              <div class="fs-4">Visibility</div>
+              <div class="fs-6"><%= retreivedData.visibility %> m</div>
+            </div>
+            <!-- Add more rows or modify the structure as needed -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-end">
+          <!-- Powered by OpenWeather API -->
+          <small class="text-muted">Powered by <a href="https://openweathermap.org/api">OpenWeather API</a></small>
         </div>
       </div>
     </div>
-    <!-- Weather - All Data Displayed here -->
-    <div class="row text-center text-uppercase weather-data-display">
-      <div class="col-6">
-        <div class="row pb-2 pt-2">
-          <div class="col-4">
-            <div>Feels Like</div>
-            <div class="weather-result"><%= Math.floor(retreivedData.main.feels_like) %>&#8451;</div>
-          </div>
-          <div class="col-4">
-            <div>Min</div>
-            <div class="weather-result"><%= Math.floor(retreivedData.main.temp_min) %>&#8451;</div>
-          </div>
-          <div class="col-4">
-            <div>Max</div>
-            <div class="weather-result"><%= Math.floor(retreivedData.main.temp_max) %>&#8451;</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="row pb-2 pt-2">
-          <div class="col-4">
-            <div>Humidity</div>
-            <div class="weather-result"><%= retreivedData.main.humidity %>%</div>
-          </div>
-          <div class="col-4">
-            <div>Wind Speed</div>
-            <div class="weather-result"><%= retreivedData.wind.speed %> Km/h</div>
-          </div>
-          <div class="col-4">
-            <div>Clouds</div>
-            <div class="weather-result"><%= retreivedData.clouds.all %>%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row text-center text-uppercase weather-data-display">
-      <div class="col-6">
-        <div class="row pb-2 pt-2">
-          <div class="col-6">
-            <div>Pressure</div>
-            <div class="weather-result"><%= retreivedData.main.pressure %> hPa</div>
-          </div>
-          <div class="col-6">
-            <div>Visibility</div>
-            <div class="weather-result"><%= retreivedData.visibility %> m</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="row pb-2 pt-2">
-          <div class="col-6">
-            <div>Sunrise</div>
-            <div class="weather-result"><%= new Date(retreivedData.sunrise * 1000).toLocaleTimeString() %></div>
-          </div>
-          <div class="col-6">
-            <div>Sunset</div>
-            <div class="weather-result"><%= new Date(retreivedData.sunset * 1000).toLocaleTimeString() %></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%- include('./partials/footer.ejs') %>
   </div>
-  <%- include('./partials/footer.ejs') %>
 </body>
 </html>
