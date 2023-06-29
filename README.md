@@ -65,7 +65,7 @@
 
 <h2>API Usage</h2>
 
-<p>This project utilizes the OpenWeatherMap API to fetch weather data for the selected city. An API key is required for accessing the weather data. Please make sure to provide your API key in the configuration file (<code>config.js</code>).</p>
+<p>This project utilizes the OpenWeatherMap API to fetch weather data for the selected city. An API key is required for accessing the weather data.</p>
 
 <h2>Credits</h2>
 
