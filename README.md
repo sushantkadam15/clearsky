@@ -50,7 +50,7 @@
   <li>Clone the repository: <code>git clone &lt;repository-url&gt;</code></li>
   <li>Install the dependencies: <code>npm install</code></li>
   <li>Start the server: <code>node app.js</code></li>
-  <li>Open the project in a web browser: <code>http://localhost:3000</code></li>
+  <li>Open the project in a web browser: <code>http://localhost:3300</code></li>
 </ol>
 
 <h2>Usage</h2>
