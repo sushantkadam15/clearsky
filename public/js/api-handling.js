@@ -6,7 +6,7 @@ const { openWeatherMapAPIKey } = require("../../config");
 // Function to get the geonameid from the worldCitiesJSON based on the city name
 const getGeoNameIDfromJSON = (cityname) => {
   const cityObj = worldCitiesJSON.find((el) => el.name === cityname);
-  return cityObj ? cityObj.geonameid : null;
+  return cityObj.geonameid;
 };
 
 // Function to fetch weather data for a given city
