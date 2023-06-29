@@ -1,116 +1,69 @@
 const axios = require("axios");
 const { response } = require("express");
 const worldCitiesJSON = require('../data/world-cities.json') ;
+const { openWeatherMapAPIKey } = require("../../config");
 
-
-const weatherIcons = {
-  clear_sky: "🌞",
-  few_clouds: "⛅",
-  scattered_clouds: "☁️",
-  broken_clouds: "☁️",
-  shower_rain: "🌧️",
-  rain: "🌧️",
-  thunderstorm: "⛈️",
-  snow: "🌨️",
-  mist: "☁️",
+// Function to get the geonameid from the worldCitiesJSON based on the city name
+const getGeoNameIDfromJSON = (cityname) => {
+  const cityObj = worldCitiesJSON.find((el) => el.name === cityname);
+  return cityObj ? cityObj.geonameid : null;
 };
 
-const getGeoNameIDfromJSON = (cityname) => {
-  const cityObj = worldCitiesJSON.filter((el) => el.name === cityname)
-  return cityObj[0].geonameid;
-  }
-  
-
-//URL Using City ID
-
-
-// Getting weather Data from openWeather API
+// Function to fetch weather data for a given city
 const cityWeather = async (cityname) => {
   const cityGeoID = getGeoNameIDfromJSON(cityname);
-  const openWeatherURL = `https://api.openweathermap.org/data/2.5/weather?id=${cityGeoID}&units=metric&APPID=7235ffc6d18866a3091b53be72948206` ;
-  const weatherApiResponse = await axios.get(openWeatherURL);
-  const {
-    main: iconMain,
-    description: iconDescription,
-    icon: iconCode,
-  } = weatherApiResponse.data.weather[0];
-  const {
-    temp: currentTemp,
-    feels_like: feelsLike,
-    temp_min: todaysMin,
-    temp_max: todaysMax,
-    humidity,
-  } = weatherApiResponse.data.main;
-  // Getting Sunrise and Sunset Time (UNIX Format)
-  const visibility = weatherApiResponse.data.visibility;
-  const wind = weatherApiResponse.data.wind;
-  const receivedWeatherData = {
-    currentTemp,
-    feelsLike,
-    todaysMin,
-    todaysMax,
-    humidity,
-    iconMain,
-    iconDescription,
-    returnedIcon: `http://openweathermap.org/img/wn/${iconCode}@2x.png`,
-    visibility,
-    wind
-  };
-  return receivedWeatherData;
+  const openWeatherURL = `https://api.openweathermap.org/data/2.5/weather?id=${cityGeoID}&units=metric&APPID=${openWeatherMapAPIKey}`;
+  
+  try {
+    const weatherApiResponse = await axios.get(openWeatherURL);
+    
+    // Extracting relevant data from the API response
+    const { lon, lat } = weatherApiResponse.data.coord;
+    const { id, main, description, icon} = weatherApiResponse.data.weather[0];
+    const iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    const { temp, feels_like, temp_min, temp_max, pressure, humidity } = weatherApiResponse.data.main;
+    const visibility = weatherApiResponse.data.visibility;
+    const { speed, deg } = weatherApiResponse.data.wind;
+    const { all: clouds } = weatherApiResponse.data.clouds;
+    const { country, sunrise, sunset } = weatherApiResponse.data.sys;
+    const { id: cityId, name } = weatherApiResponse.data;
+    
+    // Constructing the returned weather data object
+    const receivedWeatherData = {
+      city: name,
+      country,
+      lon,
+      lat,
+      weather: {
+        id,
+        main,
+        description,
+        iconURL,
+      },
+      main: {
+        temp,
+        feels_like,
+        temp_min,
+        temp_max,
+        pressure,
+        humidity,
+      },
+      visibility,
+      wind: {
+        speed,
+        deg,
+      },
+      clouds,
+      sunrise,
+      sunset,
+      cityId,
+    };
+    
+    return receivedWeatherData;
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
+    throw error;
+  }
 };
 
 module.exports = { cityWeather };
-
-
-
-
-//OPEN WEATHER SEARCH URLS
-  // const openWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=7235ffc6d18866a3091b53be72948206`;
-//  = `http://api.openweathermap.org/data/2.5/weather?q=${name},${country_code}&APPID=7235ffc6d18866a3091b53be72948206`
-  // const { latitude, longitude } = currentCityGeoDetails;
-// UnixTime Converter
-// const unixTimeConverter = (unixTime) => {
-//   let date = new Date(unixTime * 1000);
-//   // Hours part from the timestamp
-//   let hours = date.getHours();
-//   // Minutes part from the timestamp
-//   let minutes = "0" + date.getMinutes();
-//   // Will display time in 10:30:23 format
-//   if (hours < 12) {
-//     var formattedTime = hours + ":" + minutes.substr(-2) + " AM";
-//   } else {
-//     var formattedTime = hours + ":" + minutes.substr(-2) + " PM";
-//   }
-//   return formattedTime;
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-// const cityGeoDetails = async (cityname) => {
-//   const positionStackUrl = `http://api.positionstack.com/v1/forward?access_key=5b846c900d6c3b055dc5997f5a4710a8&query=${cityname}`;
-//   try {
-//     const response = await axios.get(positionStackUrl);
-//     const { name, country, country_code, label, latitude, longitude } =
-//       response.data.data[1];
-//     const currentGeoValues = {
-//       name,
-//       country,
-//       country_code,
-//       label,
-//       latitude,
-//       longitude,
-//     };
-//     return currentGeoValues;
-//   } catch {
-//     (err) => err;
-//   }
-// };
