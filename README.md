@@ -1,7 +1,6 @@
 # weather-app
 
 <h1>Weather App Demo</h1>
-<h2> <a href="https://odd-hen-cap.cyclic.app/" target="_blank"> App Demo </a></h2>
 
 <h2>Description</h2>
 
