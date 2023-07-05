@@ -1,7 +1,7 @@
 const searchBox = document.querySelector("#search");
 const autocompleteList = document.createElement("div");
 autocompleteList.id = "autocomplete-list";
-autocompleteList.className = "autocomplete-items position-absolute bg-light col-7 col-lg-3";
+autocompleteList.className = "autocomplete-items position-fixed bg-light col-7 col-lg-3";
 searchBox.parentNode.appendChild(autocompleteList);
 
 function autocomplete(userInput, cities) {
