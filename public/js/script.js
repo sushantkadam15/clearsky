@@ -18,7 +18,7 @@ function autocomplete(userInput, cities) {
     const matchingCities = cities.filter((city) =>
       city.toUpperCase().startsWith(val)
     );
-    const numResults = Math.min(matchingCities.length, 5);
+    const numResults = Math.min(matchingCities.length, 3);
 
     const { bottom, left, offsetWidth } = this.getBoundingClientRect();
     Object.assign(autocompleteList.style, {
