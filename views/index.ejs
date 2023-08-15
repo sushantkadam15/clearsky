@@ -1,10 +1,11 @@
-<%- include('./partials/header.ejs') %>
+<%- include('./partials/head.ejs') %>
 
 <body style="height: 100vh;">
+  <%- include('./partials/navigation.ejs') %>
   <div class="h-100">
     <div class="d-flex flex-column justify-content-center align-items-center d-flex h-50" >
       <span class="fs-1">🌦️</span>
-      <h1 class="h3">Weather App Demo</h1>
+      <h1 class="h3">ClearSky</h1>
   
     <!-- Search form -->
     <form action="/city" method="get" autocomplete="off" class="col-lg-3 col-8 d-flex">
@@ -20,7 +21,7 @@
   </div>
   
   
-  <%- include('./partials/footer.ejs') %>
+
 
   <script src="js/script.js"></script>
 </body>
