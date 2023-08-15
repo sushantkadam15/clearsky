@@ -1,6 +1,6 @@
 /* Styling autocomplete-items to follow the document flow */
 .autocomplete-items {
-  background-color: #504f4f;
-  z-index: 1;
+
   width: 100%;
 }
+

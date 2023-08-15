@@ -1,28 +1,14 @@
-<%- include('./partials/head.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
 
-<body style="height: 100vh;">
-  <%- include('./partials/navigation.ejs') %>
-  <div class="h-100">
-    <div class="d-flex flex-column justify-content-center align-items-center d-flex h-50" >
-      <span class="fs-1">🌦️</span>
-      <h1 class="h3">ClearSky</h1>
-  
-    <!-- Search form -->
-    <form action="/city" method="get" autocomplete="off" class="col-lg-3 col-8 d-flex">
-      <input type="search" name="cityname" id="search" class="form-control me-2 rounded-pill" />
-      <button type="submit" class="btn btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
-          <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
-          <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
-        </svg>
-      </button>
-    </form>
-    </div>
-  </div>
-  
-  
+  <body class="h-screen ">
+    <%- include('./partials/navigation.ejs') %> <%-
+    include('./partials/main_index.ejs') %>
+    <%-
+    include('./partials/footer.ejs') %>
 
 
-  <script src="js/script.js"></script>
-</body>
+    <script src="js/script.js"></script>
+  </body>
 </html>
