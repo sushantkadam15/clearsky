@@ -37,6 +37,10 @@ function autocomplete(userInput, cities) {
       autocompleteItem.addEventListener("click", function () {
         userInput.value = this.getElementsByTagName("input")[0].value;
         closeAllLists();
+
+        // Automatically submit the form when an item is selected
+        userInput.form.submit(); // This line submits the form
+        
       });
       autocompleteList.appendChild(autocompleteItem);
     }

@@ -1,10 +1,18 @@
-/* Styling autocomplete-items to follow the document flow */
+/* Set a minimum width for body, header, and footer to ensure a minimum content width */
+body,
+header,
+footer {
+  min-width: 320px;
+}
+
+/* Styling for autocomplete items to follow the document flow */
 .autocomplete-items {
   width: 100%;
   padding-left: 1rem;
   margin-top: 0.5rem;
 }
 
+/* Change the background color when an item is active */
 .autocomplete-active {
   background-color: rgb(237, 237, 240);
 }
