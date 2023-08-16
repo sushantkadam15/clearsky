@@ -27,7 +27,7 @@ app.get("/city", async (req, res) => {
     const retreivedData = await apiResults.cityWeather(
       requestedCity.slice(0, -4)
     );
-    res.render("weather", { requestedCity, retreivedData });
+    res.render("weather_display", { requestedCity, retreivedData });
   } catch (e) {
     console.log(e);
     res.render("error");

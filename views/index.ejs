@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- Include the head section -->
   <%- include('./partials/head.ejs') %>
 
-  <body class="h-screen ">
-    <%- include('./partials/navigation.ejs') %> <%-
-    include('./partials/main_index.ejs') %>
-    <%-
-    include('./partials/footer.ejs') %>
+  <body class="min-h-screen">
+    <!-- Include the navigation section -->
+    <%- include('./partials/navigation.ejs') %>
 
+    <!-- Include the main content section -->
+    <%- include('./partials/main_index.ejs') %>
 
+    <!-- Include the footer section -->
+    <%- include('./partials/footer.ejs') %>
+
+    <!-- Include the custom JavaScript file -->
     <script src="js/script.js"></script>
   </body>
 </html>
