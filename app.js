@@ -4,7 +4,6 @@ const port = process.env.PORT || 3300;
 const path = require("path");
 const apiResults = require("./public/js/api-handling.js");
 
-// const apiResult = './public/js/api-handling';
 
 app.use(express.urlencoded({ extended: true }));
 //********** Serving Static Files **********//
