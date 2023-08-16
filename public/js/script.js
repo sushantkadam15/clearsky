@@ -1,7 +1,6 @@
 const searchBox = document.querySelector("#search");
 const autocompleteList = document.createElement("div");
-autocompleteList.id = "autocomplete-list";
-autocompleteList.className = "autocomplete-items position-absolute bg-light col-7 col-lg-3";
+autocompleteList.className = "autocomplete-items";
 searchBox.parentNode.appendChild(autocompleteList);
 
 function autocomplete(userInput, cities) {
@@ -18,7 +17,7 @@ function autocomplete(userInput, cities) {
     const matchingCities = cities.filter((city) =>
       city.toUpperCase().startsWith(val)
     );
-    const numResults = Math.min(matchingCities.length, 3);
+    const numResults = Math.min(matchingCities.length, 5);
 
     const { bottom, left, offsetWidth } = this.getBoundingClientRect();
     Object.assign(autocompleteList.style, {
@@ -38,6 +37,10 @@ function autocomplete(userInput, cities) {
       autocompleteItem.addEventListener("click", function () {
         userInput.value = this.getElementsByTagName("input")[0].value;
         closeAllLists();
+
+        // Automatically submit the form when an item is selected
+        userInput.form.submit(); // This line submits the form
+        
       });
       autocompleteList.appendChild(autocompleteItem);
     }

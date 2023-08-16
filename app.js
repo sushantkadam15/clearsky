@@ -4,7 +4,6 @@ const port = process.env.PORT || 3300;
 const path = require("path");
 const apiResults = require("./public/js/api-handling.js");
 
-// const apiResult = './public/js/api-handling';
 
 app.use(express.urlencoded({ extended: true }));
 //********** Serving Static Files **********//
@@ -27,7 +26,7 @@ app.get("/city", async (req, res) => {
     const retreivedData = await apiResults.cityWeather(
       requestedCity.slice(0, -4)
     );
-    res.render("weather", { requestedCity, retreivedData });
+    res.render("weather_display", { requestedCity, retreivedData });
   } catch (e) {
     console.log(e);
     res.render("error");

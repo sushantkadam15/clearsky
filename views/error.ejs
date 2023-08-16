@@ -1,27 +1,36 @@
-<%- include('./partials/header.ejs') %>
-<body style="height: 100vh;">
-    <div class="container h-100 m-3">
-      <div class="row d-flex flex-column align-items-center justify-content-center h-75">
-        <h2 class="mt-4">Oops! Something Went Wrong 😩</h2>
-        <div>
-          <h3 class="mb-3">Possible Reasons</h3>
-          <ul>
-            <li>The city name you entered does not match any option in the dropdown menu.</li>
-            <li>The weather search limit for this site is 100 searches per day, and it has been exceeded.</li>
-            <li>Or something unexpected occurred, and I am working to fix it. 🛠️</li>
-          </ul>
-        </div>
-        <div class="row">Please visit the homepage by clicking the icon below and try again.</div>
-        <div class="mt-4 text-center text-info">
-          <a href="/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
-              <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
-              <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
-            </svg>
-          </a>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Include the head section -->
+  <%- include('./partials/head.ejs') %>
+  <body class="h-screen w-100">
+    <!-- Include the navigation bar -->
+    <%- include('./partials/navigation.ejs') %>
+    <div class="px-20 h-[80vh] flex flex-col justify-center">
+      <!-- Error Message -->
+      <h2 class="mt-4 text-3xl mb-10">Oops! Something Went Wrong 😩</h2>
+      <div>
+        <h3 class="mb-3 text-xl">Possible Reasons</h3>
+        <!-- List of Possible Reasons -->
+        <ul class="list-disc pl-5">
+          <li>
+            The city name you entered does not match any option in the dropdown
+            menu.
+          </li>
+          <li>
+            The weather search limit for this site is 100 searches per day, and
+            it has been exceeded.
+          </li>
+          <li>
+            Or something unexpected occurred, and I am working to fix it. 🛠️
+          </li>
+        </ul>
       </div>
+      <!-- Prompt for the user to try again -->
+      <p class="mt-10 text-xl text-red-400">
+        Please visit the homepage by clicking the home icon above and try again.
+      </p>
     </div>
+    <!-- Include the footer section -->
     <%- include('./partials/footer.ejs') %>
   </body>
-  
+</html>
