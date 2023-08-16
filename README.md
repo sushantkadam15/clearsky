@@ -1,68 +1,58 @@
-# weather-app
+# ![Logo](https://shy-ruby-harp-seal-yoke.cyclic.cloud/img/icons/clearsky_logo.png) ClearSky
 
-<h1>Weather App Demo</h1>
+ClearSky is a weather app that provides current weather information using the OpenWeather API. It's built using Express.js, EJS for templating, Tailwind CSS for styling, and Axios for making API requests.
 
-<h2>Description</h2>
+## Features
 
-<p>
-  The Weather App is a web application that allows users to search for the weather information of different cities around the world. It provides real-time weather data, including temperature, weather description, wind speed, and more. It is powered by OpenWeatherMap API.
-</p>
+- Displays current weather information for a given location.
+- Clean and responsive user interface using Tailwind CSS. 
+- Utilizes the OpenWeather API to fetch weather data.
 
-<h2>Features</h2>
+## Prerequisites
 
-<ul>
-  <li><strong>City Search: </strong>Users can enter the name of a city in the search box to retrieve the weather information for that particular city.</li>
-  <li><strong>Autocomplete: </strong> As users type in the search box, the app suggests matching city names, helping users find the desired city more easily.</li>
-  <li><strong>Weather Display: </strong> The app presents the weather data in a user-friendly format, providing information such as city name, temperature, weather description, wind speed, and other relevant details. </li>
-  <li><strong>Error Handling: </strong>In case of any errors, such as invalid city names or API failures, appropriate error messages are displayed to inform the users about the issue.</li>
+- `Node.js and npm must be installed on your machine.`
 
-</ul>
+## Getting Started
 
-<h2>Technologies Used</h2>
+1. Clone this repository:
 
-<ul>
-  <li><strong>HTML</strong>: The app&apos;s structure and layout are defined using HTML.</li>
-  <li><strong>CSS</strong>: CSS is used for styling the app, providing an appealing and intuitive user interface.</li>
-  <li><strong>Bootstrap 5</strong>: Bootstrap 5, a popular CSS framework, is utilized for responsive design, layout components, and utility classes.</li>
-  <li><strong>JavaScript</strong>: The app utilizes JavaScript to handle the autocomplete feature, interact with APIs, and dynamically update the UI.</li>
-  <li><strong>Embedded JavaScript (EJS)</strong>: EJS is a templating language that allows for embedding JavaScript code within HTML templates, enabling dynamic content generation.</li>
-  <li><strong>Axios</strong>: The Axios library is used for making HTTP requests to retrieve weather data from the OpenWeatherMap API.</li>
-  <li><strong>JSON</strong>: The app utilizes a JSON file (<code>world-cities.json</code>) to store city data for autocomplete functionality.</li>
-</ul>
+    ```
+    git clone https://github.com/yourusername/clearsky.git
+    cd clearsky
+    ```
 
-<h2>Dependencies</h2>
+2. Install dependencies:
 
-<ul>
-  <li>express</li>
-  <li>axios</li>
-  <li>nodemon (dev dependency)</li>
-  <li>concurrently (dev dependency)</li>
-  <li>open (dev dependency)</li>
-  <li>dotenv (dev dependency)</li>
-  <li>ejs (Embedded JavaScript)</li>
-  <li>bootstrap</li>
-</ul>
+    ```
+    npm install
+    ```
 
-<h2>Installation</h2>
+3. Set up your OpenWeather API key:
+   
+   - Sign up for an account at [OpenWeather](https://openweathermap.org/).
+   - Create a new API key.
+   - Rename the `.env.example` file to `.env` and replace `YOUR_API_KEY` with your actual API key.
+   
+4. Start the app:
 
-<ol>
-  <li>Clone the repository: <code>git clone &lt;repository-url&gt;</code></li>
-  <li>Install the dependencies: <code>npm install</code></li>
-  <li>Start the server: <code>node app.js</code></li>
-  <li>Open the project in a web browser: <code>http://localhost:3300</code></li>
-</ol>
+    ```
+    npm start
+    ```
 
-<h2>Usage</h2>
+5. Open your browser and go to `http://localhost:3000` to see ClearSky in action!
 
-<ol>
-  <li>Open the project in a web browser.</li>
-  <li>Type a city name in the search box.</li>
-  <li>Autocomplete suggestions will appear as you type.</li>
-  <li>Click on a suggestion to select a city.</li>
-  <li>The selected city will be displayed in the search box.</li>
-</ol>
 
-<h2>API Usage</h2>
+## Dependencies
 
-<p>This project utilizes the OpenWeatherMap API to fetch weather data for the selected city. An API key is required for accessing the weather data.</p>
+- Express.js
+- EJS 
+- Tailwind CSS
+- Axios
 
+## API Reference
+
+The app uses the [OpenWeather API](https://openweathermap.org/api) to fetch weather data. 
+
+## Acknowledgements
+
+- Built by Sushant Kadam
