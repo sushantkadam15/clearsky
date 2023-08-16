@@ -1,13 +1,10 @@
-
-
-
-
-
 /* Styling autocomplete-items to follow the document flow */
 .autocomplete-items {
   width: 100%;
-}
-body{
-  font-family: 'Poppins', sans-serif;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
 }
 
+.autocomplete-active {
+  background-color: rgb(237, 237, 240);
+}
