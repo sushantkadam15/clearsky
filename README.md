@@ -56,3 +56,4 @@ The app uses the [OpenWeather API](https://openweathermap.org/api) to fetch weat
 ## Acknowledgements
 
 - Built by Sushant Kadam
+- Weather Icons by [Osman Talha](https://www.figma.com/@osmantalha)
